@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Alex Rudyak. All rights reserved.
 //
 
-#import "ADSegmentView.h"
+#import "ITSegmentView.h"
 
 static CGFloat kMinimumSegmentWidth = 30.f;
 
-@interface ADSegmentView ()
+@interface ITSegmentView ()
 
 @property (nonatomic) UILabel *titleLabel;
 
@@ -19,7 +19,7 @@ static CGFloat kMinimumSegmentWidth = 30.f;
 
 @end
 
-@implementation ADSegmentView
+@implementation ITSegmentView
 
 - (instancetype)initWithTitle:(NSString *)title
 {

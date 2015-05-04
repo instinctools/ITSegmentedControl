@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADSegment.h"
+#import "ITSegment.h"
 
-@interface ADSegmentIndicator : ADSegment
+@interface ITSegmentIndicator : ITSegment
 
 - (void)setPosition:(ADSegmentPosition)position withFrame:(CGRect)frame animated:(BOOL)animated duration:(NSTimeInterval)duration;
 

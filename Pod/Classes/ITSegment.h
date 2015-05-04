@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UIView+SegmentShapes.h"
 
-@interface ADSegment : UIControl
+@interface ITSegment : UIControl
 
 @property (assign, nonatomic) CGFloat angle;
 

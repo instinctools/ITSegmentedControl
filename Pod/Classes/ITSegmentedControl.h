@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ADSegmentedControlDelegate;
+@protocol ITSegmentedControlDelegate;
 
-@interface ADSegmentedControl : UIControl
+@interface ITSegmentedControl : UIControl
 
-@property (weak, nonatomic) NSObject<ADSegmentedControlDelegate> *delegate;
+@property (weak, nonatomic) NSObject<ITSegmentedControlDelegate> *delegate;
 
 @property (assign, nonatomic, readonly) NSUInteger selectedIndex;
 
@@ -87,6 +87,6 @@
 
 @end
 
-@protocol ADSegmentedControlDelegate <NSObject>
+@protocol ITSegmentedControlDelegate <NSObject>
 
 @end

@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Alex Rudyak. All rights reserved.
 //
 
-#import "ADSegmentIndicator.h"
+#import "ITSegmentIndicator.h"
 #import "UIView+SegmentShapes.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation ADSegmentIndicator
+@implementation ITSegmentIndicator
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

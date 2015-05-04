@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04C386001AF7D91C00EFD1C3 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 04C385F51AF7D91C00EFD1C3 /* .gitkeep */; };
+		04C386011AF7D91C00EFD1C3 /* ITSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C385F71AF7D91C00EFD1C3 /* ITSegment.m */; };
+		04C386021AF7D91C00EFD1C3 /* ITSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C385F91AF7D91C00EFD1C3 /* ITSegmentedControl.m */; };
+		04C386031AF7D91C00EFD1C3 /* ITSegmentIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C385FB1AF7D91C00EFD1C3 /* ITSegmentIndicator.m */; };
+		04C386041AF7D91C00EFD1C3 /* ITSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C385FD1AF7D91C00EFD1C3 /* ITSegmentView.m */; };
+		04C386051AF7D91C00EFD1C3 /* UIView+SegmentShapes.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C385FF1AF7D91C00EFD1C3 /* UIView+SegmentShapes.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -37,6 +43,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04C385F51AF7D91C00EFD1C3 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		04C385F61AF7D91C00EFD1C3 /* ITSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSegment.h; sourceTree = "<group>"; };
+		04C385F71AF7D91C00EFD1C3 /* ITSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSegment.m; sourceTree = "<group>"; };
+		04C385F81AF7D91C00EFD1C3 /* ITSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSegmentedControl.h; sourceTree = "<group>"; };
+		04C385F91AF7D91C00EFD1C3 /* ITSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSegmentedControl.m; sourceTree = "<group>"; };
+		04C385FA1AF7D91C00EFD1C3 /* ITSegmentIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSegmentIndicator.h; sourceTree = "<group>"; };
+		04C385FB1AF7D91C00EFD1C3 /* ITSegmentIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSegmentIndicator.m; sourceTree = "<group>"; };
+		04C385FC1AF7D91C00EFD1C3 /* ITSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITSegmentView.h; sourceTree = "<group>"; };
+		04C385FD1AF7D91C00EFD1C3 /* ITSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITSegmentView.m; sourceTree = "<group>"; };
+		04C385FE1AF7D91C00EFD1C3 /* UIView+SegmentShapes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SegmentShapes.h"; sourceTree = "<group>"; };
+		04C385FF1AF7D91C00EFD1C3 /* UIView+SegmentShapes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SegmentShapes.m"; sourceTree = "<group>"; };
 		1C67486C703BD4189D2C2831 /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		218A3C01C65F469AB0F7A5D5 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		2A9B1B5DB856018CBDA40F78 /* Pods-ITSegmentedControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITSegmentedControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITSegmentedControl/Pods-ITSegmentedControl.debug.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +112,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04C385F41AF7D91C00EFD1C3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				04C385F51AF7D91C00EFD1C3 /* .gitkeep */,
+				04C385F61AF7D91C00EFD1C3 /* ITSegment.h */,
+				04C385F71AF7D91C00EFD1C3 /* ITSegment.m */,
+				04C385F81AF7D91C00EFD1C3 /* ITSegmentedControl.h */,
+				04C385F91AF7D91C00EFD1C3 /* ITSegmentedControl.m */,
+				04C385FA1AF7D91C00EFD1C3 /* ITSegmentIndicator.h */,
+				04C385FB1AF7D91C00EFD1C3 /* ITSegmentIndicator.m */,
+				04C385FC1AF7D91C00EFD1C3 /* ITSegmentView.h */,
+				04C385FD1AF7D91C00EFD1C3 /* ITSegmentView.m */,
+				04C385FE1AF7D91C00EFD1C3 /* UIView+SegmentShapes.h */,
+				04C385FF1AF7D91C00EFD1C3 /* UIView+SegmentShapes.m */,
+			);
+			name = Classes;
+			path = ../../Pod/Classes;
+			sourceTree = "<group>";
+		};
 		097BAB13198C45AA60D1BA16 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +179,7 @@
 		6003F593195388D20070C39A /* ITSegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
+				04C385F41AF7D91C00EFD1C3 /* Classes */,
 				6003F59C195388D20070C39A /* ITAppDelegate.h */,
 				6003F59D195388D20070C39A /* ITAppDelegate.m */,
 				6003F59F195388D20070C39A /* Main_iPhone.storyboard */,
@@ -278,6 +315,7 @@
 			files = (
 				6003F5A4195388D20070C39A /* Main_iPad.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				04C386001AF7D91C00EFD1C3 /* .gitkeep in Resources */,
 				6003F5A1195388D20070C39A /* Main_iPhone.storyboard in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -362,7 +400,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* ITAppDelegate.m in Sources */,
+				04C386041AF7D91C00EFD1C3 /* ITSegmentView.m in Sources */,
 				6003F5A7195388D20070C39A /* ITViewController.m in Sources */,
+				04C386021AF7D91C00EFD1C3 /* ITSegmentedControl.m in Sources */,
+				04C386051AF7D91C00EFD1C3 /* UIView+SegmentShapes.m in Sources */,
+				04C386011AF7D91C00EFD1C3 /* ITSegment.m in Sources */,
+				04C386031AF7D91C00EFD1C3 /* ITSegmentIndicator.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

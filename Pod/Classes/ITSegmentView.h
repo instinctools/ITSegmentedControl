@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADSegment.h"
+#import "ITSegment.h"
 
-@interface ADSegmentView : ADSegment
+@interface ITSegmentView : ITSegment
 
 - (instancetype)initWithTitle:(NSString *)title;
 

@@ -6,23 +6,23 @@
 //  Copyright (c) 2015 Alex Rudyak. All rights reserved.
 //
 
-#import "ADSegmentedControl.h"
-#import "ADSegmentView.h"
-#import "ADSegmentIndicator.h"
+#import "ITSegmentedControl.h"
+#import "ITSegmentView.h"
+#import "ITSegmentIndicator.h"
 
-@interface ADSegmentedControl ()
+@interface ITSegmentedControl ()
 
 @property (assign, nonatomic, readwrite) NSUInteger selectedIndex;
 
 @property (strong, nonatomic) NSArray *items;
 @property (strong, nonatomic) NSArray *segments;
-@property (strong, nonatomic) ADSegmentIndicator *selectionIndicator;
+@property (strong, nonatomic) ITSegmentIndicator *selectionIndicator;
 
 @property (strong, nonatomic) NSMutableSet *fitsSegments;
 
 @end
 
-@implementation ADSegmentedControl
+@implementation ITSegmentedControl
 
 + (Class)layerClass
 {
@@ -59,7 +59,7 @@
     self.fitsSegments = [NSMutableSet set];
     NSMutableArray *segments = [NSMutableArray arrayWithCapacity:[self.items count]];
     [self.items enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
-        ADSegmentView *segmentView = [[ADSegmentView alloc] initWithTitle:title];
+        ITSegmentView *segmentView = [[ITSegmentView alloc] initWithTitle:title];
         segmentView.angle = self.borderAngle;
         segmentView.segmentPosition = [self positionForSegmentAtIndex:idx];
         segmentView.frame = CGRectZero;
@@ -106,7 +106,7 @@
     CGFloat segmentWidth = (CGRectGetWidth(self.frame) - totalSizedWidth) / ([self.segments count] - [self.fitsSegments count]);
     CGFloat segmentHeight = CGRectGetHeight(self.frame);
     CGRect __block lastFrame = CGRectZero;
-    [self.segments enumerateObjectsUsingBlock:^(ADSegmentView *segment, NSUInteger idx, BOOL *stop) {
+    [self.segments enumerateObjectsUsingBlock:^(ITSegmentView *segment, NSUInteger idx, BOOL *stop) {
         segment.angle = self.borderAngle;
         CGFloat updatedSegmentWidth = [self.fitsSegments containsObject:@(idx)] ? [sizedWidths[@(idx)] floatValue] : segmentWidth;
         segment.frame = CGRectMake(lastFrame.origin.x + lastFrame.size.width, .0f, updatedSegmentWidth, segmentHeight);
@@ -143,7 +143,7 @@
     self.opaque = NO;
     self.backgroundColor = [UIColor clearColor];
     
-    self.selectionIndicator = [[ADSegmentIndicator alloc] initWithFrame:CGRectZero];
+    self.selectionIndicator = [[ITSegmentIndicator alloc] initWithFrame:CGRectZero];
     self.selectionIndicator.angle = self.borderAngle;
     [self addSubview:self.selectionIndicator];
     
@@ -152,7 +152,7 @@
 
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)index
 {
-    ADSegmentView *segment = self.segments[index];
+    ITSegmentView *segment = self.segments[index];
     segment.title = title;
 }
 
@@ -163,20 +163,20 @@
 
 - (void)setSizeThatFitsForSegmentAtIndex:(NSUInteger)index
 {
-    ADSegmentView *segment = self.segments[index];
+    ITSegmentView *segment = self.segments[index];
     [segment sizeToFit];
     [self.fitsSegments addObject:@(index)];
 }
 
 - (void)setEnabled:(BOOL)enabled forSegmentAtIndex:(NSUInteger)index
 {
-    ADSegmentView *segment = self.segments[index];
+    ITSegmentView *segment = self.segments[index];
     segment.enabled = enabled;
 }
 
 - (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)index
 {
-    ADSegmentView *segment = self.segments[index];
+    ITSegmentView *segment = self.segments[index];
     return segment.isEnabled;
 }
 
@@ -189,7 +189,7 @@
     [self handleSegmentSelection:self.segments[index] animated:animated];
 }
 
-- (void)handleSegmentSelection:(ADSegmentView *)sender animated:(BOOL)animated
+- (void)handleSegmentSelection:(ITSegmentView *)sender animated:(BOOL)animated
 {
     NSUInteger index = [self.segments indexOfObjectIdenticalTo:sender];
     if (index != NSNotFound && self.selectedIndex != index && sender.isEnabled) {        
@@ -201,18 +201,18 @@
 
 - (void)moveSelectedSegmentIndicatorToSegmentAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
-    ADSegmentView *selectedSegment = self.segments[index];
+    ITSegmentView *selectedSegment = self.segments[index];
     [self.selectionIndicator setPosition:[self positionForSegmentAtIndex:index] withFrame:[self indicatorFrameForSegment:selectedSegment] animated:animated duration:self.segmentIndicatorAnimationDuration];
 }
 
-- (CGRect)indicatorFrameForSegment:(ADSegmentView *)segment {
+- (CGRect)indicatorFrameForSegment:(ITSegmentView *)segment {
     return segment.frame;
 }
 
 - (void)tapGestureRecognized:(UITapGestureRecognizer *)recognizer
 {
     CGPoint location = [recognizer locationInView:self];
-    [self.segments enumerateObjectsUsingBlock:^(ADSegmentView *segment, NSUInteger index, BOOL *stop) {
+    [self.segments enumerateObjectsUsingBlock:^(ITSegmentView *segment, NSUInteger index, BOOL *stop) {
         if (CGRectContainsPoint(segment.frame, location)) {
             if (index != self.selectedIndex) {
                 [self handleSegmentSelection:segment animated:YES];

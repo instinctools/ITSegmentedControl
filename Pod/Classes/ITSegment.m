@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 Alex Rudyak. All rights reserved.
 //
 
-#import "ADSegment.h"
+#import "ITSegment.h"
 
-@interface ADSegment ()
+@interface ITSegment ()
 
 @property (strong, nonatomic) NSMutableDictionary *backgroundColors;
 
 @end
 
-@implementation ADSegment
+@implementation ITSegment
 
 + (Class)layerClass
 {
