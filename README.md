@@ -11,15 +11,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-## Installation
-
-ITSegmentedControl is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "ITSegmentedControl"
-```
-
 ## Author
 
 Alex Rudyak, aliaksandr.rudziak@instinctools.ru
