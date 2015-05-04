@@ -1,0 +1,14 @@
+PODS:
+  - ITSegmentedControl (0.1.0)
+
+DEPENDENCIES:
+  - ITSegmentedControl (from `../`)
+
+EXTERNAL SOURCES:
+  ITSegmentedControl:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ITSegmentedControl: 4f5ad412bb124791e13fec6c91ae335db8ed5c11
+
+COCOAPODS: 0.36.0

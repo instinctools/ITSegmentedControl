@@ -9,30 +9,17 @@
 
 Pod::Spec.new do |s|
   s.name             = "ITSegmentedControl"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of ITSegmentedControl."
-  s.description      = <<-DESC
-                       An optional longer description of ITSegmentedControl
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/ITSegmentedControl"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
+  s.version          = "0.0.1"
+  s.summary          = "Customizible segmented control with tilting edges"
+  s.homepage         = "https://github.com/alesarno/ITSegmentedControl"
   s.license          = 'MIT'
-  s.author           = { "Alex Rudyak" => "aliaksandr.rudziak@instinctools.ru" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/ITSegmentedControl.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { "Alex Rudyak" => "al.rudyak@gmail.com" }
+  s.source           = { :git => "https://github.com/alesanro/ITSegmentedControl.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'ITSegmentedControl' => ['Pod/Assets/*.png']
-  }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'QuartzCore', 'Foundation'
 end
