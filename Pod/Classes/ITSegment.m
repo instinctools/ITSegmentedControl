@@ -96,9 +96,9 @@
     if (!_backgroundColors) {
         _backgroundColors = [NSMutableDictionary dictionary];
         _backgroundColors[@(UIControlStateNormal)] = [UIColor clearColor];
-        _backgroundColors[@(UIControlStateDisabled)] = [UIColor grayColor];
-        _backgroundColors[@(UIControlStateSelected)] = [UIColor redColor];
-        _backgroundColors[@(UIControlStateHighlighted)] = [UIColor orangeColor];
+        _backgroundColors[@(UIControlStateDisabled)] = [UIColor clearColor];
+        _backgroundColors[@(UIControlStateSelected)] = [UIColor clearColor];
+        _backgroundColors[@(UIControlStateHighlighted)] = [UIColor clearColor];
     }
     return _backgroundColors;
 }
