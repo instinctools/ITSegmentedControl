@@ -247,6 +247,11 @@
 - (void)moveSelectedSegmentIndicatorToSegmentAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
     ITSegmentView *selectedSegment = self.segments[index];
+    selectedSegment.selected = YES;
+    if (self.selectedIndex != NSNotFound) {
+        ITSegmentView *previousSegment = self.segments[self.selectedIndex];
+        previousSegment.selected = NO;
+    }
     [self.selectionIndicator setHidden:NO];
     [self.selectionIndicator setPosition:[self positionForSegmentAtIndex:index] withFrame:[self indicatorFrameForSegment:selectedSegment] animated:animated duration:self.segmentIndicatorAnimationDuration];
 }
