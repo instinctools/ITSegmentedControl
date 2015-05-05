@@ -17,17 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="azS-DN-weX">
-                                <rect key="frame" x="144" y="96" width="493" height="58"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azS-DN-weX">
+                                <rect key="frame" x="235" y="483" width="300" height="58"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="PfM-PY-DkR"/>
+                                    <constraint firstAttribute="width" constant="300" id="Qkp-qN-UT7"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="azS-DN-weX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="76" id="GdM-E3-i6S"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="azS-DN-weX" secondAttribute="bottom" constant="870" id="ncO-Dj-wzU"/>
-                            <constraint firstAttribute="trailing" secondItem="azS-DN-weX" secondAttribute="trailing" constant="131" id="qST-s5-TDf"/>
-                            <constraint firstItem="azS-DN-weX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="144" id="ycc-t3-qfK"/>
+                            <constraint firstAttribute="centerY" secondItem="azS-DN-weX" secondAttribute="centerY" id="OY0-Ek-i8q"/>
+                            <constraint firstAttribute="centerX" secondItem="azS-DN-weX" secondAttribute="centerX" id="YGr-tI-chE"/>
                         </constraints>
                     </view>
                     <connections>

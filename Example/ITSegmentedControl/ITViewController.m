@@ -28,6 +28,8 @@
     segmentedControl.gradientTopColor = [UIColor colorWithRed:236 / 255.f green:236 / 255.f blue:236 / 255.f alpha:1.f];
     segmentedControl.gradientBottomColor = [UIColor colorWithRed:212 / 255.f green:212 / 255.f blue:212 / 255.f alpha:1.f];
     segmentedControl.useGradientBackground = YES;
+    segmentedControl.titleTextColor = [UIColor blackColor];
+    segmentedControl.selectedTitleTextColor = [UIColor yellowColor];
     [segmentedControl setSegmentSelectedAtIndex:1 animated:YES];
     [segmentedControl addTarget:self action:@selector(segmentSelectionChanged:) forControlEvents:UIControlEventValueChanged];
     [self.segmentHolderView addSubview:segmentedControl];
