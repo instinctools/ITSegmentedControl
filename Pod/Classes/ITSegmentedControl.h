@@ -85,6 +85,12 @@
 
 - (void)setSegmentSelectedAtIndex:(NSUInteger)index animated:(BOOL)animated;
 
+- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)index animated:(BOOL)animated;
+
+- (void)removeSegmentWithIndex:(NSUInteger)index animated:(BOOL)animated;
+
+- (void)removeAllSegments;
+
 @end
 
 @protocol ITSegmentedControlDelegate <NSObject>

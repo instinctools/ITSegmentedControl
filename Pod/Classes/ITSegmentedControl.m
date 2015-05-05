@@ -14,8 +14,8 @@
 
 @property (assign, nonatomic, readwrite) NSUInteger selectedIndex;
 
-@property (strong, nonatomic) NSArray *items;
-@property (strong, nonatomic) NSArray *segments;
+@property (strong, nonatomic) NSMutableArray *items;
+@property (strong, nonatomic) NSMutableArray *segments;
 @property (strong, nonatomic) ITSegmentIndicator *selectionIndicator;
 
 @property (strong, nonatomic) NSMutableSet *fitsSegments;
@@ -53,7 +53,7 @@
 {
     self = [super init];
     if (self) {
-        self.items = titles;
+        self.items = [titles mutableCopy];
     }
     
     self.fitsSegments = [NSMutableSet set];
@@ -148,6 +148,14 @@
     [self addSubview:self.selectionIndicator];
     
     self.selectedIndex = NSNotFound;
+
+    self.items = [NSMutableArray array];
+    self.segments = [NSMutableArray array];
+    self.fitsSegments = [NSMutableSet set];
+
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognized:)];
+    tapGestureRecognizer.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tapGestureRecognizer];
 }
 
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)index
@@ -180,6 +188,43 @@
     return segment.isEnabled;
 }
 
+- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)index animated:(BOOL)animated
+{
+    [self.items insertObject:title atIndex:index];
+    ITSegmentView *newSegment = [[ITSegmentView alloc] initWithTitle:title];
+    newSegment.angle = self.borderAngle;
+    newSegment.segmentPosition = [self positionForSegmentAtIndex:index];
+    newSegment.frame = CGRectZero;
+    [self.segments insertObject:newSegment atIndex:index];
+    [self addSubview:newSegment];
+    if (self.selectedIndex != NSNotFound && self.selectedIndex >= index) {
+        [self handleSegmentSelection:self.segments[(self.selectedIndex + 1)] animated:animated];
+    }
+    [self layoutIfNeeded];
+}
+
+- (void)removeSegmentWithIndex:(NSUInteger)index animated:(BOOL)animated
+{
+    [self.items removeObjectAtIndex:index];
+    ITSegmentView *removeSegment = [self.segments objectAtIndex:index];
+    [removeSegment removeFromSuperview];
+    [self.segments removeObjectAtIndex:index];
+    if (self.selectedIndex != NSNotFound && self.selectedIndex >= index) {
+        [self handleSegmentSelection:self.segments[(self.selectedIndex - 1)] animated:animated];
+    }
+    [self layoutIfNeeded];
+}
+
+- (void)removeAllSegments
+{
+    [self.items removeAllObjects];
+    [self.segments makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.segments removeAllObjects];
+    self.selectedIndex = NSNotFound;
+    [self.selectionIndicator setHidden:YES];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
 - (void)setSegmentSelectedAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
     if (index >= [self.segments count]) {
@@ -202,6 +247,7 @@
 - (void)moveSelectedSegmentIndicatorToSegmentAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
     ITSegmentView *selectedSegment = self.segments[index];
+    [self.selectionIndicator setHidden:NO];
     [self.selectionIndicator setPosition:[self positionForSegmentAtIndex:index] withFrame:[self indicatorFrameForSegment:selectedSegment] animated:animated duration:self.segmentIndicatorAnimationDuration];
 }
 
