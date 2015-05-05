@@ -227,6 +227,10 @@
 
 - (void)setSegmentSelectedAtIndex:(NSUInteger)index animated:(BOOL)animated
 {
+    if (![self.segments count] || index == NSNotFound) {
+        return;
+    }
+    
     if (index >= [self.segments count]) {
         index = [self.segments count] - 1;
     }
