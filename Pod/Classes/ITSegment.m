@@ -31,7 +31,7 @@
 
 - (UIBezierPath *)shapePath
 {
-    return [(CAShapeLayer *)self.layer path];
+    return [UIBezierPath bezierPathWithCGPath:[(CAShapeLayer *)self.layer path]];
 }
 
 - (void)setSegmentPosition:(ADSegmentPosition)segmentPosition
