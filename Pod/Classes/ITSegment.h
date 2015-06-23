@@ -20,4 +20,6 @@
 
 - (void)updateState;
 
+- (UIBezierPath *)shapePath;
+
 @end

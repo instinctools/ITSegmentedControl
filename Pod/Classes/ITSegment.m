@@ -29,6 +29,11 @@
     [self updateState];
 }
 
+- (UIBezierPath *)shapePath
+{
+    return [(CAShapeLayer *)self.layer path];
+}
+
 - (void)setSegmentPosition:(ADSegmentPosition)segmentPosition
 {
     _segmentPosition = segmentPosition;
