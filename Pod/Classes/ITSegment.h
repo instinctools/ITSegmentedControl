@@ -22,4 +22,6 @@
 
 - (UIBezierPath *)shapePath;
 
+- (CGRect)mostWidestRect;
+
 @end

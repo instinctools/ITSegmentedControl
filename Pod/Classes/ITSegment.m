@@ -31,6 +31,14 @@
 
 - (UIBezierPath *)shapePath
 {
+    if (![(CAShapeLayer *)self.layer path]) {
+        [self layoutSegment];
+    }
+
+    if (![(CAShapeLayer *)self.layer path]) {
+        return [UIBezierPath bezierPathWithRect:CGRectZero];
+    }
+
     return [UIBezierPath bezierPathWithCGPath:[(CAShapeLayer *)self.layer path]];
 }
 
@@ -106,6 +114,14 @@
         _backgroundColors[@(UIControlStateHighlighted)] = [UIColor clearColor];
     }
     return _backgroundColors;
+}
+
+- (CGRect)mostWidestRect
+{
+    if (self.shapePath) {
+        return self.shapePath.bounds;
+    }
+    return CGRectZero;
 }
 
 @end
