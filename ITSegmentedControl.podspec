@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "ITSegmentedControl"
-  s.version          = "0.0.1"
+  s.version          = "0.0.2"
   s.summary          = "Customizible segmented control with tilting edges"
   s.homepage         = "https://github.com/alesarno/ITSegmentedControl"
   s.license          = 'MIT'
