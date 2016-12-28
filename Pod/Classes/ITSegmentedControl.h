@@ -75,6 +75,8 @@
 
 @property (nonatomic) UIColor *disabledColor UI_APPEARANCE_SELECTOR;
 
+@property (assign, nonatomic) BOOL sortEnabled;
+
 @property (assign, nonatomic) BOOL sorted;
 
 @property (assign, nonatomic) BOOL ascending;

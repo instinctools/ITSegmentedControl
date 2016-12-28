@@ -160,9 +160,13 @@
 
 - (void)setSorted:(BOOL)sorted
 {
+    if (!self.sortEnabled) {
+        return;
+    }
+    
     _sorted = sorted;
     
-    if (self.selectedIndex != NSNotFound) {
+    if (self.selectedIndex != NSNotFound ) {
         ITSegmentView *selectedSegment = self.segments[self.selectedIndex];
         selectedSegment.accessory = [self accessoryForSelectedSegment];
     }
@@ -281,17 +285,12 @@
     
     NSUInteger index = [self.segments indexOfObjectIdenticalTo:sender];
     
-    if (index == NSNotFound || !sender.isEnabled) {
+    if (index == NSNotFound || !sender.isEnabled || !self.sortEnabled) {
         return;
     }
-    
-    if (self.sorted) {
-        ITSegmentView *selectedSegment = self.segments[index];
-        selectedSegment.accessory = [self accessoryForSelectedSegment];
-        
-        if ([self.delegate respondsToSelector:@selector(performSort)]) {
-            [self.delegate performSort];
-        }
+            
+    if ([self.delegate respondsToSelector:@selector(performSort)]) {
+        [self.delegate performSort];
     }
 }
 
@@ -335,7 +334,7 @@
             if (index != _selectedIndex ) {
                 [self handleSegmentSelection:segment animated:YES];
                 *stop = YES;
-            } else if (self.sorted) {
+            } else if (self.sortEnabled) {
                 [self handlePerformSort:segment];
                 *stop = YES;
             }

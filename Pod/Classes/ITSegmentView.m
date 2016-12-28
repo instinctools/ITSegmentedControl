@@ -115,12 +115,12 @@ static CGFloat kMinimumSegmentWidth = 30.f;
 
         case ITSegmentViewAccessoryArrowUp:
             self.arrowImage.hidden = NO;
-            self.arrowImage.layer.affineTransform = CGAffineTransformMakeRotation(M_PI);
+            self.arrowImage.layer.affineTransform = CGAffineTransformIdentity;
             break;
             
         case ITSegmentViewAccessoryArrowDown:
             self.arrowImage.hidden = NO;
-            self.arrowImage.layer.affineTransform = CGAffineTransformIdentity;
+            self.arrowImage.layer.affineTransform = CGAffineTransformMakeRotation(M_PI);
             break;
         
         case ITSegmentViewAccessoryNone:
