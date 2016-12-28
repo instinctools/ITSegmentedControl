@@ -9,11 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "ITSegment.h"
 
+typedef NS_ENUM(NSInteger, ITSegmentViewAccessory) {
+    ITSegmentViewAccessoryNone = 0,
+    ITSegmentViewAccessoryArrowUp = 1,
+    ITSegmentViewAccessoryArrowDown = 2
+};
+
 @interface ITSegmentView : ITSegment
 
 - (instancetype)initWithTitle:(NSString *)title;
 
 @property (copy, nonatomic) NSString *title;
+
+@property (assign, nonatomic) ITSegmentViewAccessory accessory;
 
 - (void)setTitleFont:(UIFont *)font forState:(UIControlState)state;
 - (UIFont *)titleFontForState:(UIControlState)state;

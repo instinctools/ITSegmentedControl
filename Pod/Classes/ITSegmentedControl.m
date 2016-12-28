@@ -158,6 +158,26 @@
     [self addGestureRecognizer:tapGestureRecognizer];
 }
 
+- (void)setSorted:(BOOL)sorted
+{
+    _sorted = sorted;
+    
+    if (self.selectedIndex != NSNotFound) {
+        ITSegmentView *selectedSegment = self.segments[self.selectedIndex];
+        selectedSegment.accessory = [self accessoryForSelectedSegment];
+    }
+}
+
+- (void)setAscending:(BOOL)ascending
+{
+    _ascending = ascending;
+    
+    if (self.selectedIndex != NSNotFound) {
+        ITSegmentView *selectedSegment = self.segments[self.selectedIndex];
+        selectedSegment.accessory = [self accessoryForSelectedSegment];
+    }
+}
+
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)index
 {
     ITSegmentView *segment = self.segments[index];
@@ -182,6 +202,7 @@
     segment.enabled = enabled;
 }
 
+
 - (BOOL)isEnabledForSegmentAtIndex:(NSUInteger)index
 {
     ITSegmentView *segment = self.segments[index];
@@ -198,7 +219,7 @@
     [self.segments insertObject:newSegment atIndex:index];
     [self addSubview:newSegment];
     if (self.selectedIndex != NSNotFound && self.selectedIndex >= index) {
-        [self handleSegmentSelection:self.segments[(self.selectedIndex + 1)] animated:animated];
+        [self setSegmentSelectedAtIndex:(self.selectedIndex + 1) animated:animated];
     }
     [self layoutIfNeeded];
 }
@@ -210,7 +231,7 @@
     [removeSegment removeFromSuperview];
     [self.segments removeObjectAtIndex:index];
     if (self.selectedIndex != NSNotFound && self.selectedIndex >= index) {
-        [self handleSegmentSelection:self.segments[(self.selectedIndex - 1)] animated:animated];
+        [self setSegmentSelectedAtIndex:(self.selectedIndex - 1) animated:animated];
     }
     [self layoutIfNeeded];
 }
@@ -222,7 +243,6 @@
     [self.segments removeAllObjects];
     self.selectedIndex = NSNotFound;
     [self.selectionIndicator setHidden:YES];
-    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (void)setSegmentSelectedAtIndex:(NSUInteger)index animated:(BOOL)animated
@@ -235,16 +255,43 @@
         index = [self.segments count] - 1;
     }
     
-    [self handleSegmentSelection:self.segments[index] animated:animated];
+    
+    if (self.selectedIndex != index) {
+        [self moveSelectedSegmentIndicatorToSegmentAtIndex:index animated:animated];
+        self.selectedIndex = index;
+    }
 }
 
 - (void)handleSegmentSelection:(ITSegmentView *)sender animated:(BOOL)animated
 {
     NSUInteger index = [self.segments indexOfObjectIdenticalTo:sender];
-    if (index != NSNotFound && self.selectedIndex != index && sender.isEnabled) {        
+    
+    if (index == NSNotFound || !sender.isEnabled) {
+        return;
+    }
+    
+    if (self.selectedIndex != index) {
         [self moveSelectedSegmentIndicatorToSegmentAtIndex:index animated:animated];
         self.selectedIndex = index;
         [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
+}
+
+- (void)handlePerformSort:(ITSegmentView *)sender {
+    
+    NSUInteger index = [self.segments indexOfObjectIdenticalTo:sender];
+    
+    if (index == NSNotFound || !sender.isEnabled) {
+        return;
+    }
+    
+    if (self.sorted) {
+        ITSegmentView *selectedSegment = self.segments[index];
+        selectedSegment.accessory = [self accessoryForSelectedSegment];
+        
+        if ([self.delegate respondsToSelector:@selector(performSort)]) {
+            [self.delegate performSort];
+        }
     }
 }
 
@@ -252,12 +299,28 @@
 {
     ITSegmentView *selectedSegment = self.segments[index];
     selectedSegment.selected = YES;
+    selectedSegment.accessory = [self accessoryForSelectedSegment];
+    
     if (self.selectedIndex != NSNotFound) {
         ITSegmentView *previousSegment = self.segments[self.selectedIndex];
         previousSegment.selected = NO;
+        previousSegment.accessory = ITSegmentViewAccessoryNone;
     }
+    
     [self.selectionIndicator setHidden:NO];
-    [self.selectionIndicator setPosition:[self positionForSegmentAtIndex:index] withFrame:[self indicatorFrameForSegment:selectedSegment] animated:animated duration:self.segmentIndicatorAnimationDuration];
+    [self.selectionIndicator setPosition:[self positionForSegmentAtIndex:index]
+                               withFrame:[self indicatorFrameForSegment:selectedSegment]
+                                animated:animated
+                                duration:self.segmentIndicatorAnimationDuration];
+}
+
+- (ITSegmentViewAccessory)accessoryForSelectedSegment
+{
+    if (self.sorted) {
+        return self.ascending ? ITSegmentViewAccessoryArrowUp : ITSegmentViewAccessoryArrowDown;
+    }
+    
+    return ITSegmentViewAccessoryNone;
 }
 
 - (CGRect)indicatorFrameForSegment:(ITSegmentView *)segment {
@@ -269,8 +332,11 @@
     CGPoint location = [recognizer locationInView:self];
     [self.segments enumerateObjectsUsingBlock:^(ITSegmentView *segment, NSUInteger index, BOOL *stop) {
         if (CGRectContainsPoint(segment.frame, location)) {
-            if (index != self.selectedIndex) {
+            if (index != _selectedIndex ) {
                 [self handleSegmentSelection:segment animated:YES];
+                *stop = YES;
+            } else if (self.sorted) {
+                [self handlePerformSort:segment];
                 *stop = YES;
             }
         }

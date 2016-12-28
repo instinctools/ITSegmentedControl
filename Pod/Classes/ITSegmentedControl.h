@@ -75,6 +75,10 @@
 
 @property (nonatomic) UIColor *disabledColor UI_APPEARANCE_SELECTOR;
 
+@property (assign, nonatomic) BOOL sorted;
+
+@property (assign, nonatomic) BOOL ascending;
+
 - (void)setTitle:(NSString *)title forSegmentAtIndex:(NSUInteger)index;
 - (NSString *)titleForSegmentAtIndex:(NSUInteger)index;
 
@@ -94,5 +98,8 @@
 @end
 
 @protocol ITSegmentedControlDelegate <NSObject>
+@optional
+
+- (void)performSort;
 
 @end
